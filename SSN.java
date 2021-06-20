@@ -25,35 +25,40 @@ public class SSN {
         // print to console if true
         if (isValid)
             System.out.println(socialSecurity + " is valid.");
+        else
+            main(null);
         
     }
 
     public static Boolean checkSSN(String socialSecurity) {
 
                 // check if first digit is 0
-                if (((int)socialSecurity.charAt(0)) == 0) {
+                if (((int)socialSecurity.charAt(0)) < 49) {
 
-                    System.out.println("invalid format - 1st check");
-                    main(null);
+                    System.out.println("invalid format - first digit is less than 1");
+                    socialSecurity = "";
+                    return false;
         
                 //  checks if 4th digit is less than 1
-                } else if (((int)socialSecurity.charAt(4)) < 1) {
+                } else if (((int)socialSecurity.charAt(4)) < 49) {
         
-                    System.out.println("invalid format - 2nd check");
-                    main(null);
+                    System.out.println("invalid format - the fourth digit is less than 1");
+                    socialSecurity = "";
+                    return false;
         
                 // check if dashes are formated is correctly
                 } else if (((char)socialSecurity.charAt(3)) != '-' || ((char)socialSecurity.charAt(7)) != '-') {
         
-                    System.out.println("invalid format - 2nd check");
-                    main(null);
+                    System.out.println("invalid format - missing a - symbol");
+                    socialSecurity = "";
+                    return false;
         
                 // check if the rest of the characters are digits
                 } else {
         
                     for (int i = 0; i < 10; i++) {
         
-                        if (((int)socialSecurity.charAt(i)) != 3 || ((int)socialSecurity.charAt(i)) != 7) {
+                        if (i != 3 && i != 7) {
         
                             System.out.println("social security at index " + i + " equals " + ((int)socialSecurity.charAt(i)));
         
