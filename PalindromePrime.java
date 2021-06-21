@@ -31,12 +31,39 @@ public class PalindromePrime {
 
         }
 
-        // for now, print all the palindrome primes
-        for (int w = 0; w < palindromePrimes.size(); w++) {
-            System.out.print(", " + palindromePrimes.get(w));
+        // get the total number of palindromes
+        int total = palindromePrimes.size();
+        final int TOTAL = palindromePrimes.size();
+
+        // print out all the palindrome primes in tables with 10 columns
+        while (total > 0) {
+
+            for (int v = 0; v < 10; v++) {
+
+                // default row size
+                String columns = "%d %d %d %d %d %d %d %d %d %d";
+
+                // table row items
+                int one, two, three, four, five, six, seven, eight, nine, ten;
+                
+                // assign table row items
+                one = (total >= 0) ? palindromePrimes.get(TOTAL - total--) : null;
+                two = (total >= 0) ? palindromePrimes.get(TOTAL - total--) : null;
+                three = (total >= 0) ? palindromePrimes.get(TOTAL - total--) : null;
+                four = (total >= 0) ? palindromePrimes.get(TOTAL - total--) : null;
+                five = (total >= 0) ? palindromePrimes.get(TOTAL - total--) : null;
+                six = (total >= 0) ? palindromePrimes.get(TOTAL - total--) : null;
+                seven = (total >= 0) ? palindromePrimes.get(TOTAL - total--) : null;
+                eight = (total >= 0) ? palindromePrimes.get(TOTAL - total--) : null;
+                nine = (total >= 0) ? palindromePrimes.get(TOTAL - total--) : null;
+                ten = (total >= 0) ? palindromePrimes.get(TOTAL - total--) : null;
+
+
+                System.out.printf("%d %d %d %d %d %d %d %d %d %d", one, two, three, four, five, six, seven, eight, nine, ten);
+
+            }
+
         }
-
-
     }
 
     // this method determines whether or not a number is prime
