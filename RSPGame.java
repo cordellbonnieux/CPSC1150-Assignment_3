@@ -32,18 +32,31 @@ public class RSPGame {
             int computer = 0 + (int) (Math.random() * 3);
 
             // display the plays in the comsole
-            System.out.println("Round " + round  + ": Computer played: " + playName(computer));
-            System.out.println("Round " + round  + ": You played: " + playName(user));
+            System.out.println("Computer played: " + playName(computer));
+            System.out.println("You played: " + playName(user));
 
-            checkWinner(user, computer, playerScore, compScore);
+            // check who wins based on the given plays. Then update the score
+            switch(checkWinner(user, computer, playerScore, compScore, round)) {
+                case 1:
+                    playerScore++;
+                    break;
+                case 0:
+                    compScore++;
+                    break;
+                case 2: 
+                    break;
+            }
+
+            // increment the round
             round++;
         }
 
         // check the total scores and display the winner
-        System.out.printf("Match Summary:");
-        System.out.printf("Your wins: %d", playerScore);
-        System.out.printf("Computer wins: %d", compScore);
+        //System.out.printf("Match Summary:");
+        System.out.printf("Your wins: %d \n", playerScore);
+        System.out.printf("Computer wins: %d \n", compScore);
 
+        // who ever has the most total points wins, unless it is a tie
         if (playerScore > compScore) {
 
             System.out.println("It looks like you won!");
@@ -59,22 +72,23 @@ public class RSPGame {
 
     }
 
-    public static void checkWinner(int user, int computer, playerScore, compScore) {
+    public static int checkWinner(int user, int computer, int playerScore, int compScore, int round) {
 
         // check to see who won and print the appropriate message
         if ((user == 0 && computer == 1) || (user == 1 && computer == 2) || (user == 2 && computer == 0)){
 
-            System.out.println("You win this round!");
-            playerScore++;
+            System.out.println("Round " + round + ": You win!");
+            return 1;
 
         } else if ((computer == 0 && user == 1) || (computer == 1 && user == 2) || (computer == 2 && user == 0)) {
 
-            System.out.println("You loose this round!");
-            compScore++;
+            System.out.println("Round " + round + ": Computer wins!");
+            return 0;
 
         } else {
 
-            System.out.println("This round is a draw!");
+            System.out.println("Round " + round +": It's a draw!");
+            return 2;
 
         }
     }
@@ -82,7 +96,7 @@ public class RSPGame {
     public static int userPlay(Scanner input, int round) {
 
         // prompt the user to enter 0, 1 or 2
-        System.out.println("Round " + round + ": Select: rock (0), scissors (1), or paper (2)");
+        System.out.print("Round " + round + ": Select: rock (0), scissors (1), or paper (2)");
 
         // read int from user
         int num = input.nextInt();
@@ -90,7 +104,7 @@ public class RSPGame {
         if (num > 2 || num < 0)
 
             // if user input is not valid restart method
-            return userPlay(input);
+            return userPlay(input, round);
 
         else
 
