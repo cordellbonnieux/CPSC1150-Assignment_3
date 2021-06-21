@@ -38,9 +38,11 @@ public class PalindromePrime {
 
 
     }
+
+    // this method determines whether or not a number is prime
     public static Boolean isPrime(int i) {
 
-
+        // 0 and 1 are not prime numbers
         if (i == 0 || i == 1) {
 
             return false;
@@ -49,35 +51,44 @@ public class PalindromePrime {
 
             for (int x = 2; x <= (i/2); x++) {
 
-                if (i % x == 0) {
+                // if i divided by 2 to half of i has no remainder
+                if (i % x == 0)
 
+                    // i is not prime
                     return false;
 
-                } else {
-
-                    return true;
-
-                }
             }
-        }
 
-        return false;
+            // if it cannot divide evenly, it is prime
+            return true;
+        }
     }
+
+    // this method determines whether or not a number is a palindrome
     public static Boolean isPalindrome(int num) {
 
+        // if num is a single digit, it is by definition a palindrome
+        if (num < 10) return true;
+
+        // create a string with the value of num
         String number = String.valueOf(num);
 
+        // get the length of the string version of the number
         int length = number.length();
 
+        // get half the length of the string version of the number
         int half = length / 2;
 
+        // compare the first to last, second to second to last etc digits in each number
         for (int z = 0; z < half; z++) {
 
+            // if the digits do not match, it is not a palindrome
             if (!(number.charAt(z) == number.charAt((length - 1) - z)))
                 return false;
 
         }
 
+        // otherwise, it is
         return true;
     }
 }
