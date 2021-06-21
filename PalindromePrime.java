@@ -1,7 +1,7 @@
 /**
  * Title: Palindrome Prime
  * Class / Task: CPSC 1150 - Assignment 3, Exercise 3
- * Description: 
+ * Description: Prints a 10 x 10 table of the first 100 positive palindrome prime numbers.
  * Author: Cordell Bonnieux
  * Date: June 17, 2021
  */
@@ -26,6 +26,9 @@ public class PalindromePrime {
         // find all the palindromes in primeNumbers and add them to palindomePrimes
         for (int y = 0; y < primeNumbers.size(); y++) {
 
+            // break when palindromePrimes has 100 numbers
+            if (palindromePrimes.size() >= 100) break;
+
             Boolean palindrome = isPalindrome(primeNumbers.get(y));
             if (palindrome) palindromePrimes.add(primeNumbers.get(y));
 
@@ -35,31 +38,21 @@ public class PalindromePrime {
         int total = palindromePrimes.size();
         final int TOTAL = palindromePrimes.size();
 
+        // print table heading
+        System.out.printf("\n The first 100 prime number palindromes: \n");
+
         // print out all the palindrome primes in tables with 10 columns
         while (total > 0) {
 
             for (int v = 0; v < 10; v++) {
-
-                // default row size
-                String columns = "%d %d %d %d %d %d %d %d %d %d";
-
-                // table row items
-                int one, two, three, four, five, six, seven, eight, nine, ten;
                 
-                // assign table row items
-                one = (total >= 0) ? palindromePrimes.get(TOTAL - total--) : null;
-                two = (total >= 0) ? palindromePrimes.get(TOTAL - total--) : null;
-                three = (total >= 0) ? palindromePrimes.get(TOTAL - total--) : null;
-                four = (total >= 0) ? palindromePrimes.get(TOTAL - total--) : null;
-                five = (total >= 0) ? palindromePrimes.get(TOTAL - total--) : null;
-                six = (total >= 0) ? palindromePrimes.get(TOTAL - total--) : null;
-                seven = (total >= 0) ? palindromePrimes.get(TOTAL - total--) : null;
-                eight = (total >= 0) ? palindromePrimes.get(TOTAL - total--) : null;
-                nine = (total >= 0) ? palindromePrimes.get(TOTAL - total--) : null;
-                ten = (total >= 0) ? palindromePrimes.get(TOTAL - total--) : null;
-
-
-                System.out.printf("%d %d %d %d %d %d %d %d %d %d", one, two, three, four, five, six, seven, eight, nine, ten);
+                // print out a table row of 10 items, 10 times
+                System.out.printf("%-5d %-5d %-5d %-5d %-5d %-5d %-5d %-5d %-5d %-5d \n", 
+                    palindromePrimes.get(TOTAL - total--), palindromePrimes.get(TOTAL - total--),
+                    palindromePrimes.get(TOTAL - total--), palindromePrimes.get(TOTAL - total--),
+                    palindromePrimes.get(TOTAL - total--), palindromePrimes.get(TOTAL - total--),
+                    palindromePrimes.get(TOTAL - total--), palindromePrimes.get(TOTAL - total--),
+                    palindromePrimes.get(TOTAL - total--), palindromePrimes.get(TOTAL - total--));
 
             }
 
