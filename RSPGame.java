@@ -2,7 +2,7 @@
 * Title: Rock, Scissors, Paper (aka Rock, Paper, Scissors)
 * Description: Classic game of Rock, Paper, Scissors with five rounds.
 * Author: Cordell Bonnieux
-* Date: 31/05/2021
+* Date: June 21, 2021
 * Class: CPSC 1150
 * Assignment: Lab4
 **/
